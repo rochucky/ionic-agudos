@@ -26,7 +26,7 @@ export class AuthServiceProvider {
 
 	  credentials.source = "mobile";
 
-	  this.http.post(apiUrl, {data: credentials}, {headers: headers})
+	  this.http.post(apiUrl, {credentials}, {headers: headers})
 	    .subscribe(res => {
 	      resolve(res.json());
 	    }, (err) => {

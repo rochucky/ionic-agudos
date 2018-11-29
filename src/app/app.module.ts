@@ -15,6 +15,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 // import { AuthService } from '../providers/auth-service';
+import { Dialogs } from '@ionic-native/dialogs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -55,6 +56,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     Keyboard,
     SplashScreen,
     ToastController,
+    Dialogs,
     // AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider
