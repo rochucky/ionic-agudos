@@ -2,7 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
-import { MyApp } from './app.component';
+import { IonicStorageModule } from '@ionic/storage';
+import { CamaraCard } from './app.component';
 
 import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
@@ -17,11 +18,12 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
-    MyApp,
+    CamaraCard,
     AboutPage,
     ContactPage,
     HomePage,
@@ -33,11 +35,12 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
   ],
   imports: [
     BrowserModule, HttpModule,
-    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false })
+    IonicModule.forRoot(CamaraCard, { scrollAssist: false, autoFocusAssist: false }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    CamaraCard,
     AboutPage,
     ContactPage,
     HomePage,
@@ -51,6 +54,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     StatusBar,
     Keyboard,
     SplashScreen,
+    ToastController,
     // AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider
