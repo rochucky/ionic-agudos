@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
-import { CamaraCard } from './app.component';
+import { MyApp } from './app.component';
 
 import { LoginPage } from '../pages/login/login';
 import { LoginEPage } from '../pages/login-e/login-e';
@@ -23,7 +23,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
-    CamaraCard,
+    MyApp,
     HomePage,
     LoginPage,
     LoginEPage,
@@ -34,12 +34,12 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
   ],
   imports: [
     BrowserModule, HttpModule,
-    IonicModule.forRoot(CamaraCard, { scrollAssist: false, autoFocusAssist: false }),
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    CamaraCard,
+    MyApp,
     HomePage,
     LoginPage,
     LoginEPage,

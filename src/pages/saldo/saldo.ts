@@ -29,6 +29,8 @@ export class SaldoPage {
     debFuturo: 0
   };
 
+  public establishments = new Array();
+
   public sync = {
     id: '',
     token: ''
@@ -72,6 +74,10 @@ export class SaldoPage {
               this.saldo.parcelado = responseData.parcelado;
               this.saldo.debAtual = responseData.atual;
               this.saldo.debFuturo = responseData.futuro;
+              for(let i in responseData.establishment){
+                this.establishments.push(responseData.establishment[i]);
+              }
+              
             }
 
           },(err) => {

@@ -40,40 +40,14 @@
 			<h1>Ultimas Transações</h1>
 		</ion-col>
 	</ion-row>
-	<ion-card>
-		<ion-card-header>
-			30/11/2018 14:29
-		</ion-card-header>
-		<ion-item>
-			Estabelecimento 1
-			<ion-note item-end>R$ 22,00</ion-note>
-		</ion-item>
-	</ion-card>
-	<ion-card>
-		<ion-card-header>
-			30/11/2018 14:29
-		</ion-card-header>
-		<ion-item>
-			Estabelecimento 2
-			<ion-note item-end>R$ 13,00</ion-note>
-		</ion-item>
-	</ion-card>
-	<ion-card>
-		<ion-card-header>
-			30/11/2018 14:29
-		</ion-card-header>
-		<ion-item>
-			Estabelecimento 3
-			<ion-note item-end>R$ 14,00</ion-note>
-		</ion-item>
-	</ion-card>
-	<ion-card>
-		<ion-card-header>
-			30/11/2018 14:29
-		</ion-card-header>
-		<ion-item>
-			Estabelecimento 4
-			<ion-note item-end>R$ 8,25</ion-note>
-		</ion-item>
-	</ion-card>
+
+		<ion-card *ngFor="let establishment of establishments">
+			<ion-card-header>
+				{{ establishment.date }}
+			</ion-card-header>
+			<ion-item>
+				{{ establishment.name }}
+				<ion-note item-end>R$ {{ establishment.value }}</ion-note>
+			</ion-item>
+		</ion-card>
 </ion-content>
