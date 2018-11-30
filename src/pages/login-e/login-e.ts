@@ -6,7 +6,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login/login';
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,39 +23,25 @@ import { HomePage } from '../home/home';
 export class LoginEPage {
 
   login = {
-    cnpj: '',
+    cpf: '',
     password: ''
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: AuthServiceProvider, public toast: ToastController, public storage: Storage, private loadingCtrl: LoadingController) {
-
-    let loading = this.loadingCtrl.create({
-      content: 'Carregando'
-    });
-
-    loading.present();
-
-    storage.get('token').then((tkn) => {
-      loading.dismiss();
-      if(tkn){
-        this.navCtrl.setRoot(HomePage);
-      }  
-    });
-
     
   }
 
   forgot() {
-    alert('Estamos trabalhando nesta funcionalidade');
+    alert('ok');
   }
 
   logon(){
     let array = {
       method: 'login',
       data:{
-        username: this.login.cnpj,
+        username: this.login.cpf,
         password: this.login.password,
-        usertype: 'establishments'
+        usertype: 'users'
       }
     }
 
@@ -86,7 +72,7 @@ export class LoginEPage {
           });
           toast.present();
 
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.push(TabsPage);
         }
 
       },(err) => {

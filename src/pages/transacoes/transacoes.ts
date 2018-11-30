@@ -1,35 +1,29 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs';
+import { HomePage } from '../home/home';
+/**
+ * Generated class for the TransacoesPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
+@IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-transacoes',
+  templateUrl: 'transacoes.html',
 })
-export class HomePage {
+export class TransacoesPage {
 
-  constructor(public navCtrl: NavController, public storage: Storage, private loadingCtrl: LoadingController, public alertCtrl: AlertController) {
-    let loading = this.loadingCtrl.create({
-      content: 'Carregando'
-    });
+  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage) {
+  }
 
-    loading.present();
-
-    storage.get('token').then((tkn) => {
-      loading.dismiss();
-      if(tkn){
-        this.navCtrl.setRoot(TabsPage);
-      } 
-      else{
-        this.navCtrl.setRoot(LoginPage);
-      }
-    });
-
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad TransacoesPage');
   }
 
   logout(){
@@ -55,7 +49,8 @@ export class HomePage {
 
             this.storage.remove('token').then((tkn) => {
               loading.dismiss();
-              this.navCtrl.setRoot(LoginPage);
+              this.app.getRootNav().setRoot(HomePage);
+              
             });
           }
         }

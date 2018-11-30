@@ -1,17 +1,22 @@
 import { Component } from '@angular/core';
 
-import { LoginPage } from '../login/login';
-import { LoginEPage } from '../login-e/login-e';
+import { SaldoPage } from '../saldo/saldo';
+import { RedeCredenciadaPage } from '../rede-credenciada/rede-credenciada';
+import { TransacoesPage } from '../transacoes/transacoes';
 
 @Component({
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
 
-  tab1Root = LoginPage;
-  tab2Root = LoginEPage;
+  tab1Root = SaldoPage;
+  tab2Root = RedeCredenciadaPage;
+  tab3Root = TransacoesPage;
 
   constructor() {
 
   }
+
+  
+
 }

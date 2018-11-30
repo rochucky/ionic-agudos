@@ -6,7 +6,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginEPage } from '../login-e/login-e';
-import { HomePage } from '../home/home';
+import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the LoginPage page.
@@ -28,20 +28,6 @@ export class LoginPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: AuthServiceProvider, public toast: ToastController, public storage: Storage, private loadingCtrl: LoadingController) {
-
-    let loading = this.loadingCtrl.create({
-      content: 'Carregando'
-    });
-
-    loading.present();
-
-    storage.get('token').then((tkn) => {
-      loading.dismiss();
-      if(tkn){
-        this.navCtrl.setRoot(HomePage);
-      }  
-    });
-
     
   }
 
@@ -78,15 +64,16 @@ export class LoginPage {
         else{
 
           this.storage.set('token', responseData.token);
+          this.storage.set('userid', responseData.userid);
 
           let toast = this.toast.create({
             message: "Bem vindo, " + responseData.name,
-            duration: 3000,
+            duration: 1500,
             position: 'bottom'
           });
           toast.present();
 
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.push(TabsPage);
         }
 
 	  	},(err) => {
