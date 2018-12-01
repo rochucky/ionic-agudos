@@ -32,7 +32,7 @@ export class SaldoPage {
   public establishments = new Array();
 
   public sync = {
-    id: '',
+    userid: '',
     token: ''
   };
 
