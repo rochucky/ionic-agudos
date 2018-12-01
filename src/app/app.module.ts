@@ -18,6 +18,7 @@ import { Dialogs } from '@ionic-native/dialogs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Keyboard } from '@ionic-native/keyboard';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
@@ -54,6 +55,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     SplashScreen,
     ToastController,
     Dialogs,
+    LaunchNavigator,
     // AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider

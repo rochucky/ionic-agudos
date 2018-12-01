@@ -14,7 +14,12 @@
 </ion-header>
 	
 
-<ion-content padding>
+<ion-content no-padding>
+
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
 	<ion-card>
 		<ion-list>
 			<ion-item>
@@ -37,7 +42,7 @@
 	</ion-card>
 	<ion-row>
 		<ion-col text-center>
-			<h1>Ultimas Transações</h1>
+			<h1>Transações do Período</h1>
 		</ion-col>
 	</ion-row>
 

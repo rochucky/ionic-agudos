@@ -14,7 +14,12 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
+
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
+
 	<ion-searchbar 
 		[(ngModel)]="searchStr"
 		[showCancelButton]="shouldShowCancel"
@@ -22,7 +27,7 @@
 		(ionCancel)="onCancel($event)">
 	
 	</ion-searchbar>
-	<ion-card *ngFor="let item of items" [ngClass]="item.visibility">
+	<ion-card *ngFor="let item of items" [ngClass]="item.visibility" (click)="getPlace(item.address);">
 	
 	  <ion-card-header>
 	    {{ item.name }}

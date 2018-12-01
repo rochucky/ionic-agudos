@@ -36,10 +36,10 @@ export class SaldoPage {
     token: ''
   };
 
-  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, public toast: ToastController) {
-    
+  public refreshEvent: any;
 
-      this.storage.forEach((value, key) => {
+  loadData(){
+    this.storage.forEach((value, key) => {
         if(key == 'token'){ this.sync.token = value }
         if(key == 'userid'){ this.sync.userid = value }
       })
@@ -79,6 +79,9 @@ export class SaldoPage {
               }
               
             }
+            if(this.refreshEvent != undefined){
+              this.refreshEvent.complete();
+            }
 
           },(err) => {
               console.log(err);
@@ -86,14 +89,24 @@ export class SaldoPage {
             
           });
         });
-      
+  }
 
-     
+  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, public toast: ToastController) {
+      
+    this.loadData()
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SaldoPage');
+  }
+
+  doRefresh(evt){
+
+    this.refreshEvent = evt;
+    this.establishments.splice(0, this.establishments.length);
+    this.loadData();
+
   }
 
   logout(){

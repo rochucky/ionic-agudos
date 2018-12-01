@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { ToastController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
@@ -31,21 +32,9 @@ export class RedeCredenciadaPage {
     'token': ''
   }
 
-  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider) {
-  
-    // this.items = [
-    //   {
-    //     'name': "Estab 1",
-    //     'address': "Rua João Jacinto Silva",
-    //     'visibility': ''
-    //   },
-    //   {
-    //     'name': "Estab 2",
-    //     'address': "Rua Barão Amaral do Cabo Frio, 48",
-    //     'visibility': ''
-    //   }
-    // ]
+  public refreshEvent: any;
 
+  loadData(){
     this.storage.forEach((value, key) => {
         if(key == 'token'){ this.sync.token = value }
         if(key == 'userid'){ this.sync.userid = value }
@@ -62,10 +51,16 @@ export class RedeCredenciadaPage {
 
         this.http.postData(array)
           .then((result) => {
-            
-            result.forEach((val) => {
+
+            let responseData: any;
+            responseData = result;
+            responseData.forEach((val) => {
               this.items.push(val);
             })
+
+            if(this.refreshEvent != undefined){
+              this.refreshEvent.complete();
+            }
           
           },(err) => {
               console.log(err);
@@ -73,12 +68,28 @@ export class RedeCredenciadaPage {
             
           });
       });
+  }
+
+  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, private launchNavigator: LaunchNavigator) {
+  
+
+    this.loadData();    
 
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RedeCredenciadaPage');
+  }
+
+  doRefresh(evt){
+
+    this.refreshEvent = evt;
+    this.items.splice(0, this.items.length);
+
+    this.loadData();
+
+
   }
 
   onInput(evt){
@@ -94,6 +105,23 @@ export class RedeCredenciadaPage {
         this.items[key].visibility = 'hide';
       }
     });
+  }
+
+  getPlace(address){
+    
+    let opts = {
+        appSelection:{
+            dialogHeaderText: "Selecione um App",
+            cancelButtonText: "Cancelar"
+        }
+      }
+
+    this.launchNavigator.navigate(address, opts)
+      .then(
+        success => console.log('Launched navigator'),
+        error => console.log('Error launching navigator', error)
+      );
+
   }
 
   logout(){
