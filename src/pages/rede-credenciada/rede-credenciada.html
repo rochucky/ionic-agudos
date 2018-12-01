@@ -15,5 +15,22 @@
 
 
 <ion-content padding>
-
+	<ion-searchbar 
+		[(ngModel)]="searchStr"
+		[showCancelButton]="shouldShowCancel"
+		(ionInput)="onInput($event)"
+		(ionCancel)="onCancel($event)">
+	
+	</ion-searchbar>
+	<ion-card *ngFor="let item of items" [ngClass]="item.visibility">
+	
+	  <ion-card-header>
+	    {{ item.name }}
+	  </ion-card-header>
+	
+	  <ion-card-content>
+	    {{ item.address }}
+	  </ion-card-content>
+	
+	</ion-card>
 </ion-content>
