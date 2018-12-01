@@ -42,12 +42,14 @@
 	</ion-row>
 
 		<ion-card *ngFor="let establishment of establishments">
-			<ion-card-header>
-				{{ establishment.date }}
-			</ion-card-header>
+			
 			<ion-item>
+				{{ establishment.date }}<br><br>
 				{{ establishment.name }}
-				<ion-note item-end>R$ {{ establishment.value }}</ion-note>
+				<ion-note item-end text-right>
+					{{ establishment.type }}<br><br>
+					R$ {{ establishment.value }}
+				</ion-note>
 			</ion-item>
 		</ion-card>
 </ion-content>

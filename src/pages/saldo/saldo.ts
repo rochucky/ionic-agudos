@@ -70,10 +70,10 @@ export class SaldoPage {
             }
 
             else{
-              this.saldo.avista = responseData.avista;
-              this.saldo.parcelado = responseData.parcelado;
-              this.saldo.debAtual = responseData.atual;
-              this.saldo.debFuturo = responseData.futuro;
+              this.saldo.avista = responseData.avista.toFixed(2);
+              this.saldo.parcelado = responseData.parcelado.toFixed(2);
+              this.saldo.debAtual = responseData.atual.toFixed(2);
+              this.saldo.debFuturo = responseData.futuro.toFixed(2);
               for(let i in responseData.establishment){
                 this.establishments.push(responseData.establishment[i]);
               }
