@@ -6,7 +6,7 @@ import { LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs';
+import { TabsEPage } from '../tabs-e/tabs-e';
 
 /**
  * Generated class for the LoginPage page.
@@ -23,7 +23,7 @@ import { TabsPage } from '../tabs/tabs';
 export class LoginEPage {
 
   login = {
-    cpf: '',
+    cnpj: '',
     password: ''
   };
 
@@ -39,9 +39,9 @@ export class LoginEPage {
     let array = {
       method: 'login',
       data:{
-        username: this.login.cpf,
+        username: this.login.cnpj,
         password: this.login.password,
-        usertype: 'users'
+        usertype: 'establishments'
       }
     }
 
@@ -64,15 +64,17 @@ export class LoginEPage {
         else{
 
           this.storage.set('token', responseData.token);
+          this.storage.set('userid', responseData.userid);
+          this.storage.set('usertype', responseData.usertype);
 
           let toast = this.toast.create({
-            message: "Bem vindo, " + responseData.name,
+            message: "Bem vindo, " + responseData.name + ' ' + responseData.userid,
             duration: 3000,
             position: 'bottom'
           });
           toast.present();
 
-          this.navCtrl.push(TabsPage);
+          this.navCtrl.push(TabsEPage);
         }
 
       },(err) => {

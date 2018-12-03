@@ -64,13 +64,21 @@ export class RedeCredenciadaPage {
           
           },(err) => {
               console.log(err);
-              alert('erro');
+              let toast = this.toast.create({
+                message: "Erro ao buscar os dados.",
+                duration: 3000,
+                position: 'bottom'
+              });
+              toast.present();
+              if(this.refreshEvent != undefined){
+                this.refreshEvent.complete();
+              }
             
           });
       });
   }
 
-  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, private launchNavigator: LaunchNavigator) {
+  constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, private launchNavigator: LaunchNavigator, public toast: ToastController) {
   
 
     this.loadData();    

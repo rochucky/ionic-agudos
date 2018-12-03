@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
+import { TabsEPage } from '../tabs-e/tabs-e';
 
 @Component({
   selector: 'page-home',
@@ -23,7 +24,14 @@ export class HomePage {
     storage.get('token').then((tkn) => {
       loading.dismiss();
       if(tkn){
-        this.navCtrl.setRoot(TabsPage);
+        storage.get('usertype').then((type) => {
+          if(type == 'user'){
+            this.navCtrl.setRoot(TabsPage);
+          }
+          else{
+            this.navCtrl.setRoot(TabsEPage);
+          }
+        });
       } 
       else{
         this.navCtrl.setRoot(LoginPage);

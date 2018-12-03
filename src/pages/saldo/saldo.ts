@@ -85,7 +85,15 @@ export class SaldoPage {
 
           },(err) => {
               console.log(err);
-              alert('erro');
+              let toast = this.toast.create({
+                message: "Erro ao buscar os dados.",
+                duration: 3000,
+                position: 'bottom'
+              });
+              toast.present();
+              if(this.refreshEvent != undefined){
+                this.refreshEvent.complete();
+              }
             
           });
         });

@@ -7,8 +7,9 @@ import { AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../home/home';
+
 /**
- * Generated class for the TransacoesPage page.
+ * Generated class for the TransacoesEPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -16,10 +17,10 @@ import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-transacoes',
-  templateUrl: 'transacoes.html',
+  selector: 'page-transacoes-e',
+  templateUrl: 'transacoes-e.html',
 })
-export class TransacoesPage {
+export class TransacoesEPage {
 
   public searchStr = '';
 
@@ -40,7 +41,7 @@ export class TransacoesPage {
       .then(() => {
 
         let array = {
-          method: 'getUserTransactions',
+          method: 'getEstablishmentTransactions',
           data:{
             userid: this.sync.userid,
             token: this.sync.token

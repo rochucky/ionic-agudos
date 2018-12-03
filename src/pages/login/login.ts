@@ -65,6 +65,7 @@ export class LoginPage {
 
           this.storage.set('token', responseData.token);
           this.storage.set('userid', responseData.userid);
+          this.storage.set('usertype', responseData.userype);
 
           let toast = this.toast.create({
             message: "Bem vindo, " + responseData.name,
