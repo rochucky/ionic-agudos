@@ -1,5 +1,12 @@
 page-venda {
 	
+	.vertical-align-content > *
+	{
+	     display: flex!important;
+	     align-content: center!important;
+	     align-items: center!important;
+	};
+
 	background: url('../images/login_bg6.jpg') no-repeat top;
 	background-size: cover;
 
@@ -8,10 +15,18 @@ page-venda {
 	}
 	
 	ion-card{
-		background-color: rgba(255,255,255,0.6)!important;
+		background-color: rgba(255,255,255,0.8)!important;
+	}
+	ion-card.hide{
+		display: none;
 	}
 }
 
-ion-item{
-	margin-bottom: 2px!important;
+ion-label, ion-input, ion-select{
+	font-size: 1.6em;
+}
+
+ion-label.card-title{
+	font-size: 3em;
+	font-weight: bold;
 }

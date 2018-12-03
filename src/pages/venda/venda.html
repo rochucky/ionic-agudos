@@ -14,6 +14,78 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content np-padding class="vertical-align-content">
+	<ion-card [ngClass]="first">
+		<ion-grid>
+			<ion-row padding>
+				<ion-col text-center>
+					<ion-label class="card-title">Dados da Venda</ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<form>
+						<ion-item padding>
+							<ion-label>Valor</ion-label>
+							<ion-input full type="number" [(ngModel)]="venda.value" name="value" text-right></ion-input>
+						</ion-item>
+						<ion-item padding>
+							<ion-label>Parcelas</ion-label>
+							<ion-select [(ngModel)]="venda.installments" name="installments">
+								<ion-option value="1">1</ion-option>
+								<ion-option value="2">2</ion-option>
+								<ion-option value="3">3</ion-option>
+								<ion-option value="4">4</ion-option>
+								<ion-option value="5">5</ion-option>
+								<ion-option value="6">6</ion-option>
+							</ion-select>
+						</ion-item>
+						<ion-item padding>
+							<ion-label>CPF</ion-label>
+							<ion-input full type="number" [(ngModel)]="venda.cpf" name="cpf" text-right></ion-input>
+						</ion-item>
+						<button ion-button block color="secondary" (click)="next()" padding>Avançar</button>
+					</form>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+	<ion-card [ngClass]="second">
+		<ion-grid>
+			<ion-row>
+				<ion-col text-center>
+					<ion-label class="card-title">Confirmação</ion-label>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					
+					<ion-item padding>
+						<ion-label>Valor: </ion-label>
+						<ion-label text-right>{{ venda.value }}</ion-label>
+					</ion-item>
+					<ion-item padding>
+						<ion-label>Parcelas:  </ion-label>
+						<ion-label text-right>{{ venda.installments }}</ion-label>
+					</ion-item>
+					<ion-item padding>
+						<ion-label>CPF: </ion-label>
+						<ion-label text-right>{{ venda.cpf }}</ion-label>
+					</ion-item>
+					<ion-item padding>
+						<ion-label>Nome: </ion-label>
+						<ion-label text-right>{{ venda.name }}</ion-label>
+					</ion-item>
+					<ion-item padding>
+						<ion-label>Senha</ion-label>
+						<ion-input full type="password" [(ngModel)]="venda.password" name="password"></ion-input>
+					</ion-item>
+					<button ion-button block color="primary" (click)="finish()">Concluir</button>
+					<button ion-button block color="secondary" (click)="back()">voltar</button>
+					
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+	</ion-card>
+    
 </ion-content>

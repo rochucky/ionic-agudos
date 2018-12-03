@@ -63,7 +63,7 @@ export class TransacoesEPage {
               toast.present();
             }
             else{
-
+              this.items.splice(0, this.items.length);
               responseData.forEach((val) => {
               this.items.push(val);
             });
@@ -123,11 +123,69 @@ export class TransacoesEPage {
   doRefresh(evt){
 
     this.refreshEvent = evt;
-    this.items.splice(0, this.items.length);
 
     this.loadData();
 
 
+  }
+
+  cancelTransaction(code){
+    let data = {
+      table: 'transactions',
+      filter: "code|"+code,
+      data: {
+        status: 2,
+        id: "custom"
+      },
+      method: "saveData"
+    };
+
+    let confirm = this.alertCtrl.create({
+      title: 'Cancelar Transação',
+      subTitle: 'Deseja realmente Cancelar esta transação?<br>Se for uma compra parcelada, cancelará todos os lançamentos.',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            let loading = this.loadingCtrl.create({
+              content: 'Cancelando'
+            });
+
+            loading.present();
+
+            this.http.postData(data)
+              .then((result) => {
+
+                if(result[1] == null){
+                  let toast = this.toastCtrl.create({
+                    message: "Transação cancelada",
+                    duration: 3000,
+                    position: 'bottom'
+                  });
+                  toast.present();
+                  loading.dismiss();
+                  this.loadData();
+                }
+
+              },(err) => {
+
+                console.log(err);
+                alert('error');
+
+              });
+          }
+        }
+      ]
+    });
+    confirm.present();
+    
   }
 
   logout(){

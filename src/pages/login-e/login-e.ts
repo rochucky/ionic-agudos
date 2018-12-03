@@ -68,7 +68,7 @@ export class LoginEPage {
           this.storage.set('usertype', responseData.usertype);
 
           let toast = this.toast.create({
-            message: "Bem vindo, " + responseData.name + ' ' + responseData.userid,
+            message: "Bem vindo, " + responseData.name,
             duration: 3000,
             position: 'bottom'
           });

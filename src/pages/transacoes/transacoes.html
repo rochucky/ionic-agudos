@@ -36,8 +36,8 @@
 			{{ item.date }}<br><br>
 			{{ item.name }}
 			<ion-note item-end text-right>
-				{{ item.type }}<br><br>
-				R$ {{ item.value }}
+				<ion-badge color="light">{{ item.type }}</ion-badge><br><br>
+				<ion-badge>R$ {{ item.value }}</ion-badge>
 			</ion-note>
 		</ion-item>
 	
