@@ -52,8 +52,8 @@
 				{{ establishment.date }}<br><br>
 				{{ establishment.name }}
 				<ion-note item-end text-right>
-					{{ establishment.type }}<br><br>
-					R$ {{ establishment.value }}
+					<ion-badge color="light">{{ establishment.type }}</ion-badge><br><br>
+					<ion-badge>R$ {{ establishment.value }}</ion-badge>
 				</ion-note>
 			</ion-item>
 		</ion-card>

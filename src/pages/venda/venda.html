@@ -27,7 +27,7 @@
 					<form>
 						<ion-item padding>
 							<ion-label>Valor</ion-label>
-							<ion-input full type="number" [(ngModel)]="venda.value" name="value" text-right></ion-input>
+							<ion-input full type="text" [(ngModel)]="venda.value" placeholder="(R$) Real" [brmasker]="{money: true, type:num}" name="value" text-right></ion-input>
 						</ion-item>
 						<ion-item padding>
 							<ion-label>Parcelas</ion-label>

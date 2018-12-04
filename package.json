@@ -29,6 +29,7 @@
     "@ionic-native/status-bar": "~4.17.0",
     "@ionic-native/toast": "^4.17.0",
     "@ionic/storage": "^2.2.0",
+    "brmasker-ionic-3": "^1.6.3",
     "cordova-android": "6.3.0",
     "cordova-plugin-actionsheet": "2.3.3",
     "cordova-plugin-device": "^2.0.2",

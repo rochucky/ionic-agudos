@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
+import { BrMaskerModule } from 'brmasker-ionic-3';
 
 import { LoginPage } from '../pages/login/login';
 import { LoginEPage } from '../pages/login-e/login-e';
@@ -41,7 +42,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     VendaPage
   ],
   imports: [
-    BrowserModule, HttpModule,
+    BrowserModule, HttpModule, BrMaskerModule,
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
     IonicStorageModule.forRoot()
   ],

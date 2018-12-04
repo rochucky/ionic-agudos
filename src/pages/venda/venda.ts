@@ -30,14 +30,21 @@ export class VendaPage {
   	name: ''
   }
 
+  public userid: any;
+
   public first = '';
   public second = 'hide';
 
   constructor(public app: App, public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public storage: Storage, public http: AuthServiceProvider, public toastCtrl: ToastController) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad VendaPage');
+  }
+
+  toDecimal(){
+  	alert('ok');
   }
 
   next(){
@@ -56,7 +63,8 @@ export class VendaPage {
 	     this.http.postData(data)
 	      .then((result) => {
 
-	        let responseData = result;
+	        let responseData: any;
+	        responseData = result;
 	        if(responseData.error == true){
 	        	let toast = this.toastCtrl.create({
 							message: responseData.message,
@@ -97,24 +105,26 @@ export class VendaPage {
 
   finish(){
   	let loading = this.loadingCtrl.create({
-      	content: 'Carregando'
-	    });
+    	content: 'Carregando'
+    });
 
-	    loading.present();
-  		let data = {
+    loading.present();
+		this.storage.get('userid').then((id) => {
+  		this.userid = id;
+			let data = {
 	      method: "makeSale",
-	      data: {
 	      	value: this.venda.value,
 	      	cpf: this.venda.cpf,
 	      	password: this.venda.password,
-	      	installments: this.venda.installments
-	      }
+	      	installments: this.venda.installments,
+	      	id: this.userid
 	    };
 
-	     this.http.postData(data)
+	    this.http.postData(data)
 	      .then((result) => {
 
-	        let responseData = result;
+	        let responseData: any;
+	        responseData = result;
 	        if(responseData.error){
 	        	let toast = this.toastCtrl.create({
 							message: responseData.message,
@@ -124,7 +134,19 @@ export class VendaPage {
 						toast.present();
 	        }
 	        else{
-		        
+		        let alert = this.alertCtrl.create({
+						  title: 'Sucesso',
+						  subTitle: 'Venda realizada com sucesso.',
+						  buttons: [
+						  	{
+						  		text: "Ok",
+						  		handler: () => {
+						  			this.navCtrl.setRoot(HomePage);
+						  		}
+						  	}
+						  ]
+						});
+						alert.present();
 	        	
 	        }
 
@@ -135,6 +157,40 @@ export class VendaPage {
 
 	      });
 	      loading.dismiss();
+	    });
+  }
+
+  logout(){
+  	let confirm = this.alertCtrl.create({
+      title: 'Logout',
+      subTitle: 'Deseja realmente fazer logout?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            let loading = this.loadingCtrl.create({
+              content: 'Carregando'
+            });
+
+            loading.present();
+
+            this.storage.remove('token').then((tkn) => {
+              loading.dismiss();
+              this.app.getRootNav().setRoot(HomePage);
+              
+            });
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
 }
