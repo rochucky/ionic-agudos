@@ -27,7 +27,8 @@ export class VendaPage {
   	installments: '',
   	cpf: '',
   	password: '',
-  	name: ''
+  	name: '',
+  	code: ''
   }
 
   public userid: any;
@@ -48,7 +49,7 @@ export class VendaPage {
   }
 
   next(){
-  	if(this.venda.value != '' && this.venda.installments != '' && this.venda.cpf != ''){
+  	if(this.venda.value != '' && this.venda.installments != '' && this.venda.code != ''){
   		let loading = this.loadingCtrl.create({
       	content: 'Carregando'
 	    });
@@ -56,7 +57,7 @@ export class VendaPage {
 	    loading.present();
   		let data = {
 	      table: 'users',
-	      filter: "cpf|"+this.venda.cpf,
+	      filter: "code|"+this.venda.code,
 	      method: "getRecord"
 	    };
 
@@ -114,7 +115,7 @@ export class VendaPage {
 			let data = {
 	      method: "makeSale",
 	      	value: this.venda.value,
-	      	cpf: this.venda.cpf,
+	      	code: this.venda.code,
 	      	password: this.venda.password,
 	      	installments: this.venda.installments,
 	      	id: this.userid
