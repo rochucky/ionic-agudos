@@ -26,15 +26,15 @@
 				<form>
 					<ion-item no-padding>
 						<ion-label>CPF</ion-label>
-						<ion-input full type="text" [(ngModel)]="login.cpf" name="cpf"></ion-input>
+						<ion-input full type="number" [(ngModel)]="login.cpf" name="cpf"></ion-input>
 					</ion-item>
 					<ion-item no-padding>
 						<ion-label>Senha</ion-label>
 						<ion-input full type="password" [(ngModel)]="login.password" name="password"></ion-input>
 					</ion-item>
-					<ion-label text-right>
+					<!-- <ion-label text-right>
 						<a (click)="forgot()">Esqueceu a Senha?</a>
-					</ion-label>
+					</ion-label> -->
 					<button ion-button block color="secondary" (click)="logon()">Entrar</button>
 					<button ion-button block color="primary" (click)="changeType()">Estabelecimento</button>
 				</form>
