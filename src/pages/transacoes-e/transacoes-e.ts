@@ -23,6 +23,8 @@ import { HomePage } from '../home/home';
 export class TransacoesEPage {
 
   public searchStr = '';
+  public avista = true;
+  public parcelada = true;
 
   public items = new Array();
 
@@ -114,7 +116,18 @@ export class TransacoesEPage {
       else if(val.type.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
         this.items[key].visibility = '';
       }
+      else if(val.code.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
+        this.items[key].visibility = '';
+      }
       else{
+        this.items[key].visibility = 'hide';
+      }
+
+      if(val.type == 'À Vista' && this.avista != true){
+        this.items[key].visibility = 'hide';
+      }
+      
+      if(val.type != 'À Vista' && this.parcelada != true){
         this.items[key].visibility = 'hide';
       }
     });
@@ -209,7 +222,7 @@ export class TransacoesEPage {
 
             loading.present();
 
-            this.storage.remove('token').then((tkn) => {
+            this.storage.clear().then(() => {
               loading.dismiss();
               this.app.getRootNav().setRoot(HomePage);
               

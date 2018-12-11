@@ -153,7 +153,7 @@ export class RedeCredenciadaPage {
 
             loading.present();
 
-            this.storage.remove('token').then((tkn) => {
+            this.storage.clear().then((tkn) => {
               loading.dismiss();
               this.app.getRootNav().setRoot(HomePage);
             });

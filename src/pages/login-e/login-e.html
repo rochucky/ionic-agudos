@@ -14,21 +14,16 @@
 
 
 
-<ion-content padding class="vertical-align-content">
+<ion-content mo-padding class="vertical-align-content">
 	<ion-grid>
-		<ion-row>
-			<ion-col text-center>
-				<h1>Login</h1>
-			</ion-col>
-		</ion-row>
 		<ion-row>
 			<ion-col>
 				<form>
-					<ion-item no-padding>
+					<ion-item padding>
 						<ion-label>CNPJ</ion-label>
 						<ion-input full type="number" [(ngModel)]="login.cnpj" name="cnpj"></ion-input>
 					</ion-item>
-					<ion-item no-padding>
+					<ion-item padding>
 						<ion-label>Senha</ion-label>
 						<ion-input full type="password" [(ngModel)]="login.password" name="password"></ion-input>
 					</ion-item>

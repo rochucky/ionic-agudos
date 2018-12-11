@@ -27,8 +27,8 @@ export class VendaPage {
   	installments: '',
   	cpf: '',
   	password: '',
-  	name: '',
-  	code: ''
+	name: '',
+	code: ''
   }
 
   public userid: any;
@@ -77,7 +77,7 @@ export class VendaPage {
 	        else{
 		        this.first = 'hide';
 	  				this.second = '';
-	        	this.venda.name = responseData.name;
+	        	this.venda.cpf = responseData.cpf;
 	        }
 
 	      },(err) => {
@@ -118,8 +118,9 @@ export class VendaPage {
 	      	code: this.venda.code,
 	      	password: this.venda.password,
 	      	installments: this.venda.installments,
-	      	id: this.userid
-	    };
+					id: this.userid,
+					code: this.code
+				};
 
 	    this.http.postData(data)
 	      .then((result) => {
@@ -164,7 +165,7 @@ export class VendaPage {
   logout(){
   	let confirm = this.alertCtrl.create({
       title: 'Logout',
-      subTitle: 'Deseja realmente fazer logout?',
+      subTitle: 'Deseja realmente fazer logout?',	
       buttons: [
         {
           text: 'Não',
@@ -182,7 +183,7 @@ export class VendaPage {
 
             loading.present();
 
-            this.storage.remove('token').then((tkn) => {
+            this.storage.clear().then((tkn) => {
               loading.dismiss();
               this.app.getRootNav().setRoot(HomePage);
               

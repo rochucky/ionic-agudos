@@ -41,8 +41,8 @@
 							</ion-select>
 						</ion-item>
 						<ion-item padding>
-							<ion-label>Nº Cartão</ion-label>
-							<ion-input full type="number" [(ngModel)]="venda.code" name="code" text-right></ion-input>
+						<ion-label>Nº Cartão</ion-label>
+						<ion-input full type="number" [(ngModel)]="venda.code" name="code" text-right></ion-input>
 						</ion-item>
 						<button ion-button block color="secondary" (click)="next()" padding>Avançar</button>
 					</form>
@@ -60,23 +60,23 @@
 			<ion-row>
 				<ion-col>
 					
-					<ion-item padding>
+					<ion-item no-padding>
 						<ion-label>Valor: </ion-label>
 						<ion-label text-right>{{ venda.value }}</ion-label>
 					</ion-item>
-					<ion-item padding>
+					<ion-item no-padding>
 						<ion-label>Parcelas:  </ion-label>
 						<ion-label text-right>{{ venda.installments }}</ion-label>
 					</ion-item>
-					<ion-item padding>
+					<ion-item no-padding>
 						<ion-label>Nº Cartão: </ion-label>
 						<ion-label text-right>{{ venda.code }}</ion-label>
 					</ion-item>
-					<ion-item padding>
+					<ion-item no-padding>
 						<ion-label>Nome: </ion-label>
 						<ion-label text-right>{{ venda.name }}</ion-label>
 					</ion-item>
-					<ion-item padding>
+					<ion-item no-padding>
 						<ion-label>Senha</ion-label>
 						<ion-input full type="password" [(ngModel)]="venda.password" name="password"></ion-input>
 					</ion-item>

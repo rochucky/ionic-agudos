@@ -22,6 +22,8 @@ import { HomePage } from '../home/home';
 export class TransacoesPage {
 
   public searchStr = '';
+  public avista = true;
+  public parcelada = true;
 
   public items = new Array();
 
@@ -101,7 +103,7 @@ export class TransacoesPage {
   onInput(evt){
     console.log(this.searchStr);
     this.items.forEach((val, key) => {
-      if(val.name.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
+      if(val.code.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
         this.items[key].visibility = '';
       }
       else if(val.value.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
@@ -110,13 +112,25 @@ export class TransacoesPage {
       else if(val.date.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
         this.items[key].visibility = '';
       }
-      else if(val.type.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
+      else if(val.name.toLowerCase().search(this.searchStr.toLowerCase()) >= 0){
         this.items[key].visibility = '';
       }
       else{
         this.items[key].visibility = 'hide';
       }
+      
+      if(val.type == 'À Vista' && this.avista != true){
+        this.items[key].visibility = 'hide';
+      }
+      
+      if(val.type != 'À Vista' && this.parcelada != true){
+        this.items[key].visibility = 'hide';
+      }
     });
+  }
+
+  teste(){
+    alert(this.avista);
   }
 
   doRefresh(evt){
@@ -150,7 +164,7 @@ export class TransacoesPage {
 
             loading.present();
 
-            this.storage.remove('token').then((tkn) => {
+            this.storage.clear().then(() => {
               loading.dismiss();
               this.app.getRootNav().setRoot(HomePage);
               

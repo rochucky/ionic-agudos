@@ -25,13 +25,24 @@
 		[(ngModel)]="searchStr"
 		[showCancelButton]="shouldShowCancel"
 		(ionInput)="onInput($event)"
-		(ionCancel)="onCancel($event)">
+		(ionCancel)="onCancel($event)"
+		placeholder="Buscar">
 	
 	</ion-searchbar>
 
+	<ion-item>
+	    <ion-label>À Vista</ion-label>
+	    <ion-checkbox checked="true" [(ngModel)]="avista" (click)="onInput($event)"></ion-checkbox>
+	</ion-item>
+
+	<ion-item>
+	    <ion-label>Parcelada</ion-label>
+	    <ion-checkbox checked="true" [(ngModel)]="parcelada" (click)="onInput($event)"></ion-checkbox>
+	</ion-item>
+
 	<ion-card *ngFor="let item of items" [ngClass]="item.visibility" >
 		
-		<ion-card-header>
+		<ion-card-header (click)="searchStr = item.code; onInput($evt);">
 		    Código: {{ item.code }} <ion-badge color="alert">{{ item.status }}</ion-badge>
 		</ion-card-header>
 		<ion-item>

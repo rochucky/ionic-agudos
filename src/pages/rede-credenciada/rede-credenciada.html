@@ -24,9 +24,11 @@
 		[(ngModel)]="searchStr"
 		[showCancelButton]="shouldShowCancel"
 		(ionInput)="onInput($event)"
-		(ionCancel)="onCancel($event)">
+		(ionCancel)="onCancel($event)"
+		placeholder="Buscar">
 	
 	</ion-searchbar>
+
 	<ion-card *ngFor="let item of items" [ngClass]="item.visibility" (click)="getPlace(item.address);">
 	
 	  <ion-card-header>

@@ -74,7 +74,7 @@ export class LoginEPage {
           });
           toast.present();
 
-          this.navCtrl.push(TabsEPage);
+          this.navCtrl.setRoot(TabsEPage);
         }
 
       },(err) => {

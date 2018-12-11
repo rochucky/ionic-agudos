@@ -24,8 +24,8 @@ export class HomePage {
     storage.get('token').then((tkn) => {
       loading.dismiss();
       if(tkn){
-        storage.get('usertype').then((type) => {
-          if(type == 'user'){
+        storage.get('usertype').then((usertype) => {
+          if(usertype == 'users'){
             this.navCtrl.setRoot(TabsPage);
           }
           else{
@@ -61,7 +61,7 @@ export class HomePage {
 
             loading.present();
 
-            this.storage.remove('token').then((tkn) => {
+            this.storage.clear().then((tkn) => {
               loading.dismiss();
               this.navCtrl.setRoot(LoginPage);
             });
