@@ -1,10 +1,15 @@
+<ion-navbar color="top">
+  <ion-title text-center>{{ title }}</ion-title>
+  <ion-buttons end> <button ion-button icon-only (click)="logout();"><ion-icon name="exit"></ion-icon></button> </ion-buttons>
+</ion-navbar>
+
 <ion-tabs #menuTabs selectedIndex="0" (ionChange)="tabChange()">
-    <ion-slides (ionSlideWillChange)="slideChange()">
-      <ion-slide>
-          <ion-tab [root]="tab1Root" tabTitle="Venda" tabIcon="card"></ion-tab>
-      </ion-slide>
-      <ion-slide>
-          <ion-tab [root]="tab2Root" tabTitle="Transações" tabIcon="logo-usd"></ion-tab>
-      </ion-slide>
-    </ion-slides>
-  </ion-tabs>
+  <ion-slides (ionSlideWillChange)="slideChange()">
+    <ion-slide>
+        <ion-tab [root]="tab1Root" tabTitle="Venda" tabIcon="card"></ion-tab>
+    </ion-slide>
+    <ion-slide>
+        <ion-tab [root]="tab2Root" tabTitle="Transações" tabIcon="logo-usd"></ion-tab>
+    </ion-slide>
+  </ion-slides>
+</ion-tabs>

@@ -1,0 +1,9 @@
+page-tabs{
+	background: url('../images/login_bg6.jpg') no-repeat top;
+	background-size: cover;
+
+	ion-tabs{
+		margin-top: 56px;
+		height: calc(100% - 56px);
+	}
+}

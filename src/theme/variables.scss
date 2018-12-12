@@ -40,8 +40,9 @@ $colors: (
   light:           #f4f4f4,
   dark:            #222,
   energy:          #f2b632,
-  alert:		   rgba(200, 50, 50, 0.7),
-  top:		   	   rgba(50,50,150,0.7)
+  alert:		   		 rgba(200, 50, 50, 0.7),
+  top:		   	   	 rgba(50,50,150,0.7),
+  transparent:		 rgba(255,255,255,0)
 );
 
 $toolbar-background: color($colors, primary);
