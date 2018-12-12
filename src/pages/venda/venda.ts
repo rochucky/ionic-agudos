@@ -27,8 +27,8 @@ export class VendaPage {
   	installments: '',
   	cpf: '',
   	password: '',
-	name: '',
-	code: ''
+		name: '',
+		code: ''
   }
 
   public userid: any;
@@ -57,7 +57,7 @@ export class VendaPage {
 	    loading.present();
   		let data = {
 	      table: 'users',
-	      filter: "code|"+this.venda.code,
+	      filter: "cpf|"+this.venda.code,
 	      method: "getRecord"
 	    };
 
@@ -78,6 +78,7 @@ export class VendaPage {
 		        this.first = 'hide';
 	  				this.second = '';
 	        	this.venda.cpf = responseData.cpf;
+	        	this.venda.name = responseData.name;
 	        }
 
 	      },(err) => {
@@ -119,7 +120,6 @@ export class VendaPage {
 	      	password: this.venda.password,
 	      	installments: this.venda.installments,
 					id: this.userid,
-					code: this.code
 				};
 
 	    this.http.postData(data)

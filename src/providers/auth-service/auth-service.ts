@@ -5,8 +5,8 @@ import { ToastController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
 
-// let apiUrl = 'http://104.236.64.246/application/webservice.php';
-let apiUrl = 'http://localhost/application/webservice.php';
+let apiUrl = 'http://104.236.64.246/application/webservice.php';
+// let apiUrl = 'http://localhost/application/webservice.php';
 
 /*
   Generated class for the AuthServiceProvider provider.
