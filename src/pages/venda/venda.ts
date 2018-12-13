@@ -143,7 +143,7 @@ export class VendaPage {
 						  	{
 						  		text: "Ok",
 						  		handler: () => {
-						  			this.navCtrl.setRoot(HomePage);
+						  			this.app.getRootNav().setRoot(HomePage);
 						  		}
 						  	}
 						  ]

@@ -143,37 +143,4 @@ export class TransacoesPage {
 
   }
 
-  logout(){
-  	let confirm = this.alertCtrl.create({
-      title: 'Logout',
-      subTitle: 'Deseja realmente fazer logout?',
-      buttons: [
-        {
-          text: 'Não',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Sim',
-          handler: () => {
-            let loading = this.loadingCtrl.create({
-              content: 'Carregando'
-            });
-
-            loading.present();
-
-            this.storage.clear().then(() => {
-              loading.dismiss();
-              this.app.getRootNav().setRoot(HomePage);
-              
-            });
-          }
-        }
-      ]
-    });
-    confirm.present();
-  }
-
 }

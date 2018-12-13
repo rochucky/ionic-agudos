@@ -7,7 +7,7 @@ import { TransacoesEPage } from '../transacoes-e/transacoes-e';
 import { HomePage } from '../home/home';
 
 @Component({
-  selector: 'page-tabs',
+  selector: 'page-tabs-e',
   templateUrl: 'tabs-e.html'
 })
 

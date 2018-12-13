@@ -1,7 +1,7 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-// import { Network } from '@ionic-native/network';
-import { ToastController } from 'ionic-angular';
+
+import { LoadingController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 
 
@@ -19,46 +19,32 @@ export class AuthServiceProvider {
 
   public connectionStatus = true;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public loadingCtrl: LoadingController) {
     console.log('Hello AuthServiceProvider Provider');
   }
-
-  // private listenConnection(): void {
-  //   this.network.onDisconnect()
-  //     .subscribe(() => {
-  //       this.connectionStatus = false;
-  //     });
-  //   this.network.onConnect()
-  //     .subscribe(() => {
-  //       this.connectionStatus = true;
-  //     });
-  // }
 
   postData(credentials) {
 		return new Promise((resolve, reject) => {
 			// this.listenConnection();
+			let loading = this.loadingCtrl.create({
+	      content: 'Carregando'
+	    });
+		  loading.present();
 
-		  if(this.connectionStatus == true){
-			  let headers = new Headers();
-			  headers.append('Content-Type', 'application/json');
+		  let headers = new Headers();
+		  headers.append('Content-Type', 'application/json');
 
-			  credentials.source = "mobile";
+		  credentials.source = "mobile";
 
-			  this.http.post(apiUrl, {credentials}, {headers: headers})
-			    .subscribe(res => {
-			      resolve(res.json());
-			    }, (err) => {
-			      reject(err);
-			    });
-		  	
-		  }
-		  else{
-		  	let response = {
-		  		error: true,
-		  		message: "Não há conexão com a internet"
-		  	}
-		  	return response;
-		  }
+		  this.http.post(apiUrl, {credentials}, {headers: headers})
+		    .subscribe(res => {
+		    	loading.dismiss();
+		      resolve(res.json());
+		    }, (err) => {
+		    	loading.dismiss();
+		      reject(err);
+		    });
+
 		});
   }
 }

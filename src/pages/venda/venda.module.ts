@@ -4,10 +4,8 @@ import { VendaPage } from './venda';
 
 @NgModule({
   declarations: [
-    VendaPage,
   ],
   imports: [
-    IonicPageModule.forChild(VendaPage),
   ],
 })
 export class VendaPageModule {}

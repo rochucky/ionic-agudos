@@ -4,10 +4,8 @@ import { SaldoPage } from './saldo';
 
 @NgModule({
   declarations: [
-    SaldoPage,
   ],
   imports: [
-    IonicPageModule.forChild(SaldoPage),
   ],
 })
 export class SaldoPageModule {}

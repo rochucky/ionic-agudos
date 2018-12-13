@@ -4,10 +4,8 @@ import { TransacoesPage } from './transacoes';
 
 @NgModule({
   declarations: [
-    TransacoesPage,
   ],
   imports: [
-    IonicPageModule.forChild(TransacoesPage),
   ],
 })
 export class TransacoesPageModule {}
